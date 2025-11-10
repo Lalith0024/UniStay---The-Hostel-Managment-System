@@ -4,7 +4,7 @@ import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 
 function Home() {
-    const [loggedInUser, setLoggedInUser] = useState('');
+    // const [loggedInUser, setLoggedInUser] = useState('');
     const [stats, setStats] = useState({ projects: 0, tasks: 0, completed: 0 });
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -47,7 +47,7 @@ function Home() {
                 <div className='header-content'>
                     <div className='user-info'>
                         <h1>Dashboard</h1>
-                        <p className='welcome-text'>Welcome back, {loggedInUser || 'User'}!</p>
+                        <p className='welcome-text'>Welcome back, {'User'}!</p>
                     </div>
                     <button onClick={handleLogout} className='btn-logout'>Logout</button>
                 </div>
