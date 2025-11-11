@@ -109,7 +109,7 @@ function Login() {
                             required
                         />
                     </div>
-                    <button type='submit' className='btn-primary'>Login</button>
+                    <button type='submit' className='btn-primary' onClick={handleLogin}>Login</button>
                     <div className='auth-link'>
                         <span>Don't have an account? </span>
                         <Link to="/register">Sign Up</Link>
