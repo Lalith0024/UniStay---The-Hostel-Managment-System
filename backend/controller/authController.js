@@ -73,9 +73,10 @@ const signup = async (req,res)=>{
         });
         usermodel.password = await bcrypt.hash(password, 10);
         await usermodel.save();
-        return res.status(201).json({
-            message:"User registered successfully"
-        });
+ return res.status(201).json({
+  message: "User registered successfully",
+  success: true
+});
     }
     catch(err){
         console.error('Signup error:', err);
@@ -183,10 +184,14 @@ const login = async (req,res)=>{
                 error: "Token generation failed"
             });
         }
-        res.status(200).json({
-            message:"Login Successful",
-            jwtToken: token
-        });
+        console.log(`User ${user.email} logged in successfully`);
+res.status(200).json({
+  message: "Login Successful",
+  success: true,
+  token,           // single canonical field
+  name: user.name,
+  email: user.email
+});
     }
     catch(err){
         console.error('Login error:', err);
