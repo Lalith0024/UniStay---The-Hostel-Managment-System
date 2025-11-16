@@ -53,21 +53,10 @@ app.use((err, req, res, next) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`\n========================================`)
-  console.log(`Server is running on port ${port}`)
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`)
-  console.log(`========================================\n`)
-  const mongoose = require('mongoose');
-  const connectionState = mongoose.connection.readyState;
-  const states = {0: 'DISCONNECTED', 1: 'CONNECTED', 2: 'CONNECTING', 3: 'DISCONNECTING'};
-  console.log(`MongoDB Connection State: ${states[connectionState] || 'UNKNOWN'}`);
-  if (connectionState !== 1) {
-    console.log(`\n⚠️  WARNING: MongoDB is not connected!`);
-    console.log(`   Database operations will fail until MongoDB is running.`);
-    console.log(`   To start MongoDB:`);
-    console.log(`   1. If installed via Homebrew: brew services start mongodb-community`);
-    console.log(`   2. Or use: mongod --dbpath /path/to/data/directory`);
-    console.log(`   3. Or use MongoDB Atlas (cloud) and update MONGODB_URI\n`);
-  }
-})
+if (process.env.NODE_ENV === 'development') {
+  app.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`)
+  })
+}
+
+module.exports = app
