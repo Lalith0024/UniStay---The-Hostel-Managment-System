@@ -1,4 +1,8 @@
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+if (!API_BASE_URL) {
+  console.warn("⚠️ BACKEND_URL is not defined in your environment!");
+}
 
 export const API_ENDPOINTS = {
   AUTH: {
