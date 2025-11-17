@@ -4,6 +4,7 @@ if (!API_BASE_URL) {
   console.warn("⚠️ BACKEND_URL is not defined in your environment!");
 }
 
+
 export const API_ENDPOINTS = {
   AUTH: {
     SIGNUP: `${API_BASE_URL}/auth/signup`,
